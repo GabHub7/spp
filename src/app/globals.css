@@ -1,0 +1,442 @@
+@import "tailwindcss";
+
+/* ============================================================
+   PONCOLPAY — SISTEM INFORMASI PEMBAYARAN SPP
+   SMK Poncol Jakarta — Design System
+   Theme: Merah · Hitam · Putih · Oranye  (Claymorphism)
+   ============================================================ */
+
+:root {
+  /* ── Surfaces (warm white) ── */
+  --bg-primary: #f6f3f1;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #efe7e3;
+  --bg-card: #ffffff;
+  --bg-input: #f1eae7;
+
+  /* ── Ink / text (near-black) ── */
+  --text-primary: #1b1a1d;
+  --text-secondary: #6b6560;
+  --text-muted: #a39a94;
+
+  /* ── Brand accents ── */
+  --accent: #d11f2d;            /* school red */
+  --accent-hover: #b0161f;
+  --accent-light: rgba(209, 31, 45, 0.09);
+  --accent-2: #f47a1f;          /* orange */
+  --accent-2-hover: #db661a;
+  --accent-2-light: rgba(244, 122, 31, 0.12);
+  --ink: #1b1a1d;               /* black brand */
+
+  /* Brand gradient — red → orange (matches the school crest) */
+  --grad-brand: linear-gradient(135deg, #d11f2d 0%, #e8501f 55%, #f47a1f 100%);
+  --grad-brand-soft: linear-gradient(135deg, rgba(209,31,45,0.12) 0%, rgba(244,122,31,0.12) 100%);
+
+  --border: #ece2dc;
+
+  /* ── Claymorphism shadow system (warm-tinted) ──────────────
+     soft outer drop + inner top highlight + inner bottom shadow
+     for the inflated, tactile "clay" feel. */
+  --shadow:
+    0 8px 18px -6px rgba(74, 30, 24, 0.14),
+    inset 0 2px 3px rgba(255, 255, 255, 0.9),
+    inset 0 -5px 9px rgba(74, 30, 24, 0.05);
+  --shadow-md:
+    0 16px 34px -10px rgba(74, 30, 24, 0.20),
+    inset 0 3px 5px rgba(255, 255, 255, 0.95),
+    inset 0 -7px 13px rgba(74, 30, 24, 0.07);
+  /* Red-tinted clay for primary buttons */
+  --clay-primary:
+    0 10px 22px -4px rgba(209, 31, 45, 0.42),
+    inset 0 2px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -5px 9px rgba(120, 12, 20, 0.30);
+  /* Orange-tinted clay for secondary action buttons */
+  --clay-accent2:
+    0 10px 22px -4px rgba(244, 122, 31, 0.42),
+    inset 0 2px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -5px 9px rgba(150, 70, 10, 0.28);
+  /* Pressed-in clay for inputs / wells */
+  --clay-inset:
+    inset 4px 4px 9px rgba(74, 30, 24, 0.08),
+    inset -4px -4px 9px rgba(255, 255, 255, 0.95);
+
+  /* Generous, puffy radii — every control is a rounded rectangle */
+  --radius-sm: 12px;
+  --radius: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+
+  /* Legacy HSL tokens — used by shared UI primitives */
+  --background: 18 24% 96%;
+  --background-card: 0 0% 100%;
+  --background-muted: 20 22% 92%;
+  --foreground: 270 4% 11%;
+  --foreground-muted: 24 6% 40%;
+  --border-hsl: 22 28% 90%;
+  --primary: 355 74% 47%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 28 89% 54%;
+  --secondary-foreground: 0 0% 100%;
+  --destructive: 355 74% 47%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 142 64% 36%;
+  --warning: 30 90% 48%;
+  --ring: 355 74% 47%;
+  --radius-hsl: 0.625rem;
+  --card-shadow: var(--shadow);
+  --card-shadow-hover: var(--shadow-md);
+  --sidebar-background: 0 0% 100%;
+  --sidebar-border: 22 28% 90%;
+  --sidebar-foreground: 270 4% 11%;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #151316;
+  --bg-secondary: #1e1b1f;
+  --bg-tertiary: #272328;
+  --bg-card: #1e1b1f;
+  --bg-input: #272328;
+  --text-primary: #efe9ea;
+  --text-secondary: #a39ba0;
+  --text-muted: #6b626a;
+  --border: #332e34;
+
+  --accent: #ef3a47;
+  --accent-hover: #f2545f;
+  --accent-light: rgba(239, 58, 71, 0.16);
+  --accent-2: #f78c33;
+  --accent-2-hover: #f99a4d;
+  --accent-2-light: rgba(247, 140, 51, 0.16);
+
+  --shadow:
+    0 8px 18px -6px rgba(0, 0, 0, 0.55),
+    inset 0 2px 3px rgba(255, 255, 255, 0.05),
+    inset 0 -5px 9px rgba(0, 0, 0, 0.45);
+  --shadow-md:
+    0 16px 34px -10px rgba(0, 0, 0, 0.62),
+    inset 0 3px 5px rgba(255, 255, 255, 0.06),
+    inset 0 -7px 13px rgba(0, 0, 0, 0.5);
+  --clay-primary:
+    0 10px 22px -4px rgba(239, 58, 71, 0.5),
+    inset 0 2px 3px rgba(255, 255, 255, 0.16),
+    inset 0 -5px 9px rgba(0, 0, 0, 0.4);
+  --clay-accent2:
+    0 10px 22px -4px rgba(247, 140, 51, 0.45),
+    inset 0 2px 3px rgba(255, 255, 255, 0.14),
+    inset 0 -5px 9px rgba(0, 0, 0, 0.4);
+  --clay-inset:
+    inset 4px 4px 9px rgba(0, 0, 0, 0.42),
+    inset -4px -4px 9px rgba(255, 255, 255, 0.04);
+
+  --background: 300 5% 9%;
+  --background-card: 290 6% 11%;
+  --background-muted: 290 6% 15%;
+  --foreground: 330 14% 92%;
+  --foreground-muted: 320 5% 62%;
+  --border-hsl: 300 6% 19%;
+  --primary: 355 84% 59%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 28 91% 58%;
+  --secondary-foreground: 0 0% 100%;
+  --ring: 355 84% 59%;
+  --sidebar-background: 290 7% 8%;
+  --sidebar-border: 300 6% 16%;
+  --sidebar-foreground: 330 14% 85%;
+}
+
+/* ── Animations ─────────────────────────────── */
+@keyframes fadeIn      { from{opacity:0} to{opacity:1} }
+@keyframes fadeInUp    { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+@keyframes fadeInScale { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:none} }
+@keyframes pageEnter   { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+@keyframes spin        { to { transform: rotate(360deg); } }
+
+.animate-fade-in       { animation: fadeIn 0.22s ease both; }
+.animate-fade-in-up    { animation: fadeInUp 0.28s ease both; }
+.animate-fade-in-scale { animation: fadeInScale 0.22s ease both; }
+
+.page-enter {
+  animation: pageEnter 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-enter, .animate-fade-in, .animate-fade-in-up, .animate-fade-in-scale { animation: none; }
+}
+
+/* Brand gradient text — for the PoncolPay wordmark */
+.brand-wordmark {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Stagger delay for list children */
+.stagger>*:nth-child(1){animation-delay:0ms}
+.stagger>*:nth-child(2){animation-delay:40ms}
+.stagger>*:nth-child(3){animation-delay:80ms}
+.stagger>*:nth-child(4){animation-delay:120ms}
+.stagger>*:nth-child(5){animation-delay:160ms}
+.stagger>*:nth-child(6){animation-delay:200ms}
+
+/* Hover utilities */
+.hover-lift{transition:transform .18s ease,box-shadow .18s ease}
+.hover-lift:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.press-effect{transition:transform .1s ease;-webkit-tap-highlight-color:transparent}
+.press-effect:active{transform:scale(.97)}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-jakarta), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    /* `clip` (not `hidden`) stops accidental sideways scroll on mobile without
+       turning <body> into a scroll container — so sticky headers keep working. */
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4 { letter-spacing: -0.02em; }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  ::selection { background: var(--accent-light); color: var(--accent); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* ── Reusable claymorphism surfaces ── */
+  .clay {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+  .clay-raised {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+  }
+  .clay-pressed {
+    background-color: var(--bg-input);
+    border-radius: var(--radius);
+    box-shadow: var(--clay-inset);
+  }
+  .card { /* alias for shared primitives */
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  /* ── Buttons — every button is a rounded rectangle ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius);
+    transition: transform 0.12s ease, box-shadow 0.15s ease, background-color 0.15s ease, filter 0.15s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.04); }
+  .btn:active:not(:disabled) { transform: translateY(1px) scale(0.99); filter: brightness(0.97); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+
+  .btn-primary { background-color: var(--accent); color: #fff; box-shadow: var(--clay-primary); }
+  .btn-primary:hover:not(:disabled) { background-color: var(--accent-hover); }
+
+  .btn-accent2 { background-color: var(--accent-2); color: #fff; box-shadow: var(--clay-accent2); }
+  .btn-accent2:hover:not(:disabled) { background-color: var(--accent-2-hover); }
+
+  .btn-secondary {
+    background-color: var(--bg-card); color: var(--text-primary);
+    border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
+  .btn-secondary:hover:not(:disabled) { background-color: var(--bg-tertiary); }
+
+  .btn-ghost { background-color: transparent; color: var(--text-secondary); box-shadow: none; }
+  .btn-ghost:hover:not(:disabled) { background-color: var(--bg-tertiary); color: var(--text-primary); }
+
+  .btn-danger { background-color: var(--accent-light); color: var(--accent); }
+  .btn-danger:hover:not(:disabled) { background-color: var(--accent); color: #fff; }
+
+  .btn-sm { min-height: 2.25rem; padding: 0.375rem 0.875rem; font-size: 0.8125rem; border-radius: var(--radius-sm); }
+
+  /* ── Inputs ── */
+  .input, .select, .textarea {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.625rem 0.875rem;
+    background-color: var(--bg-input);
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    box-shadow: var(--clay-inset);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    outline: none;
+    font-family: inherit;
+  }
+  .textarea { min-height: 6rem; line-height: 1.5; resize: vertical; }
+  .input::placeholder, .textarea::placeholder { color: var(--text-muted); }
+  .input:focus, .select:focus, .textarea:focus {
+    border-color: var(--accent);
+    box-shadow: var(--clay-inset), 0 0 0 3px var(--accent-light);
+  }
+  .input:disabled, .select:disabled { opacity: 0.55; cursor: not-allowed; }
+
+  .label { display:block; font-size: 0.8125rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.375rem; }
+
+  /* Flex/grid children default to a min-width equal to their content, which
+     is what makes selects with long option text (e.g. "RPL · Rekayasa
+     Perangkat Lunak") or unbroken values inside a filter row/grid force the
+     row wider than the viewport and break the whole page layout on small
+     screens. Forcing them to 0 lets them shrink and wrap normally instead. */
+  .input, .select, .textarea { min-width: 0; }
+
+  /* ── Modal / form action rows ──────────────────────────────────────────
+     Used for every "Batal / Simpan" footer. Wraps and grows buttons to fill
+     the row on narrow screens instead of overflowing or getting clipped. */
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .form-actions > .btn { flex: 1 1 140px; }
+  @media (min-width: 480px) {
+    .form-actions > .btn { flex: 0 1 auto; }
+  }
+
+  /* Generic responsive filter bar: search + dropdowns that reflow onto as
+     many rows as needed instead of overflowing the container. */
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .filter-bar > * { min-width: 0; }
+  .filter-bar > .filter-search { flex: 1 1 220px; }
+  .filter-bar > .filter-select { flex: 1 1 160px; }
+
+  /* ── Badges ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.25rem;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem; font-weight: 600;
+    border-radius: 999px; white-space: nowrap;
+  }
+  .status-success { color: #15803d; background-color: rgba(22, 163, 74, 0.12); }
+  .status-warning { color: #b45309; background-color: rgba(244, 122, 31, 0.14); }
+  .status-error   { color: var(--accent); background-color: var(--accent-light); }
+  .status-info    { color: #1d4ed8; background-color: rgba(37, 99, 235, 0.10); }
+  .status-neutral { color: var(--text-secondary); background-color: var(--bg-tertiary); }
+
+  /* ── Tables ── */
+  .data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.875rem; }
+  .data-table thead th {
+    text-align: left; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.02em;
+    text-transform: uppercase; color: var(--text-muted);
+    padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  .data-table tbody td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-primary); vertical-align: middle; }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table tbody tr { transition: background-color 0.12s ease; }
+  .data-table tbody tr:hover { background-color: var(--bg-tertiary); }
+
+  /* ── Responsive tables → stacked cards on phones ──
+     Add class `data-cards` to a `.data-table` and `data-label="…"` to each
+     `td`; below 640px every row collapses into a tap-friendly card so the
+     page never needs horizontal scrolling on mobile. */
+  @media (max-width: 640px) {
+    .data-cards thead { display: none; }
+    .data-cards, .data-cards tbody, .data-cards tr, .data-cards td { display: block; width: 100%; }
+    .data-cards tr {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+    .data-cards tbody tr:hover { background-color: var(--bg-card); }
+    .data-cards td {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: right;
+      padding: 0.55rem 0.95rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-cards tr td:last-child { border-bottom: none; }
+    .data-cards td::before {
+      content: attr(data-label);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: left;
+      flex-shrink: 0;
+    }
+    .data-cards td[data-label="Aksi"], .data-cards td.cell-actions { justify-content: flex-end; }
+    .data-cards td[data-label="Aksi"]::before, .data-cards td.cell-actions::before { content: none; }
+  }
+
+  .section-title { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
+  .section-subtitle { font-size: 0.875rem; color: var(--text-secondary); }
+
+  .shimmer {
+    background: linear-gradient(90deg, var(--bg-tertiary) 0%, var(--border) 50%, var(--bg-tertiary) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* ── Print styles — receipts & reports (Bukti Pembayaran / Laporan PDF) ── */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
+  .print-area { box-shadow: none !important; border: none !important; }
+}
